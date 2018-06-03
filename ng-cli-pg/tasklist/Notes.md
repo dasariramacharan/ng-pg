@@ -11,6 +11,7 @@ configure the default HTTP host and port used by the development server with two
 ng serve --host 0.0.0.0 --port 4201
 
 main commands
+-----------------
 ng generate
 ng lint
 ng build
