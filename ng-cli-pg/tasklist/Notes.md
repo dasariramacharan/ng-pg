@@ -25,12 +25,20 @@ ng new appnamexxx --skip-install #without npm install
 np new appnamexxx --dry-run #dont write files report them
 
 ng config #Set a value in the Angular CLI configuration. ( replaces ng set/get)
-ng config [key] [value] Get/set configuration values. [key] should be in JSON path format.
+ng config [key] [value] Get/set configuration values / project wise settings. [key] should be in JSON path format.
          Example: a[3].foo.bar[2].
     If only the [key] is provided it will get the value. 
     If both the [key] and [value] are provided it will set the value.
 
- 
+ ng g c componentname
+ ng g s servicename
+ ng g cl classname
+ ng g d directivename
+ ng g p pipename
+ ng g i interface interfacename
+ ng g e enumName
+ ng g m moduleName --routing
+
 ---------------
 TO explore 
 1) view-encapsulation strategy
