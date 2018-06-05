@@ -8,7 +8,7 @@ import { TaskDetailsComponent } from './task-details/task-details.component';
 
 import { TaskService } from './core/task.service';
 import { NavBarComponent } from './core/nav-bar/nav-bar.component';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { NavBarComponent } from './core/nav-bar/nav-bar.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule //optional module : dependency to use advanced angular material animations
   ],
   providers: [TaskService],
   bootstrap: [AppComponent]
