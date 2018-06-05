@@ -15,6 +15,9 @@ to do just git push (set default origin/master)
 https://stackoverflow.com/questions/18801147/changing-the-git-remote-push-to-default
 
 
+Fix Issue :Why is 'Updating the Git index failed' displayed
+    git config --global core.autocrlf false
+
 Command shortcuts
 --------------------------
 ConEmu - Open Explorer with current directory

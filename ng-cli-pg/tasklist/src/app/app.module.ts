@@ -7,13 +7,15 @@ import { AllTasksComponent } from './all-tasks/all-tasks.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
 
 import { TaskService } from './core/task.service';
+import { NavBarComponent } from './core/nav-bar/nav-bar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AllTasksComponent,
-    TaskDetailsComponent
+    TaskDetailsComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
