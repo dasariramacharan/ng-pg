@@ -37,10 +37,51 @@ ng config [key] [value] Get/set configuration values / project wise settings. [k
  ng g p pipename
  ng g i interface interfacename
  ng g e enumName
+
  ng g m moduleName --routing
+ ng new appname --routing
+ ng g gaurd auth #canACtivate gaurd with name auth.gaurd.ts
+ ng g c modulename/componentname # to create a new component under the specified module
+
+ ng build --help #developer build by default
+ ng build #outputs to /dist folder by default refer .angular.json
+ ng build --prod
+ ng build --target=development --environment=dev
+ ng build --target=production  --environment=prod
+ ng build --dev -e=dev #similarly for prod
+
+ #use sourcemap to draw dependency map, 
+ npm install source-map-explorer --save-dev
+ node_modules/.bin/source-map-explorer dist/main.bundle.js
+ 
+evironment.prod.ts and environment.ts 
+TODO: Refer comparing dev and prod build target differences (cli -m6 slide)
+in prod - uglification , tree shaking, aot , extracting css to css files are done
+
+ ng serve --help
+
+
+ ng test #runs only unit tests , executed via karma , runs all *.spc.ts files
+ ng test -sr or ng test -w false # to run the tests only a single time e.g on a build server
+ ng test --code-coverage # ng test -cc , report is generated in /coverage folder (is configurable in the .angular.json)
+ 
+ ng e2e #run end to end tests , using protractor,  Default config loc is protractor.conf.js. use --config to change
+ ng e2e --element-explorer # or -ee flag to debug 
+
+  
+
+
+
+
+
+ 
+
+
 
 ---------------
 TO explore 
 1) view-encapsulation strategy
 
 2)free templates -google for 'angular 6 templates free'
+
+3) https://blog.thoughtram.io/angular/2016/02/22/angular-2-change-detection-explained.html

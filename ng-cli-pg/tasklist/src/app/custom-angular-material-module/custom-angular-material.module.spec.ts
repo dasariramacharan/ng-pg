@@ -1,13 +1,13 @@
-import { CustomAngularMaterialModuleModule } from './custom-angular-material-module.module';
+import { CustomAngularMaterialModule } from './custom-angular-material.module';
 
-describe('CustomAngularMaterialModuleModule', () => {
-  let customAngularMaterialModuleModule: CustomAngularMaterialModuleModule;
+describe('CustomAngularMaterialModule', () => {
+  let customAngularMaterialModule: CustomAngularMaterialModule;
 
   beforeEach(() => {
-    customAngularMaterialModuleModule = new CustomAngularMaterialModuleModule();
+    customAngularMaterialModule = new CustomAngularMaterialModule();
   });
 
   it('should create an instance', () => {
-    expect(customAngularMaterialModuleModule).toBeTruthy();
+    expect(customAngularMaterialModule).toBeTruthy();
   });
 });
