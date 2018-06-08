@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TaskService } from '../core/task.service';
+import { Task } from '../task/task';
 
 @Component({
   selector: 'rd-all-tasks',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllTasksComponent implements OnInit {
 
-  constructor() { }
+  tasks :Task[];
+  
+  constructor(private taskService : TaskService) { }
 
   ngOnInit() {
+   this.reloadTasks();
   }
+
+ reloadTasks(){
+   this.tasks = this.taskService.getTasks();
+ }
 
 }
