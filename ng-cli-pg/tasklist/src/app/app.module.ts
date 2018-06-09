@@ -10,6 +10,8 @@ import { TaskService } from './core/task.service';
 import { NavBarComponent } from './core/nav-bar/nav-bar.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
+import { CustomAngularMaterialModule} from './custom-angular-material-module/custom-angular-material.module'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule //optional module : dependency to use advanced angular material animations
+    BrowserAnimationsModule, //optional module : dependency to use advanced angular material animations
+    CustomAngularMaterialModule // import the custom Angular Material modules after Angular's BrowserModule, 
   ],
   providers: [TaskService],
   bootstrap: [AppComponent]
