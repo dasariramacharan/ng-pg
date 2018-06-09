@@ -7,11 +7,12 @@ import { TaskStatus } from '../shared/task-status.enum';
 })
 export class TaskService {
 
+   
    TASKS : Array<Task> =  [
      new Task({ id: 1, title:'Task 1 : not started' , status:TaskStatus.NotStarted}),
-     new Task({ id: 2, title:'Task 2 : not started' , status:TaskStatus.InProgress}),
-     new Task({ id: 3, title:'Task 3 : not started' , status:TaskStatus.Complete}),
-     new Task({ id: 4, title:'Task 4 : not started' , status:TaskStatus.OnHold})     
+     new Task({ id: 2, title:'Task 2 : in progress' , status:TaskStatus.InProgress}),
+     new Task({ id: 3, title:'Task 3 : complete' , status:TaskStatus.Complete}),
+     new Task({ id: 4, title:'Task 4 : on hold' , status:TaskStatus.OnHold})     
   ];
 
   constructor() { }
@@ -20,6 +21,11 @@ export class TaskService {
      return this.TASKS.filter(t=>t.isActive);
    }
  
+  getTaskById(id: number): Task {
+    //throw new Error("Method not implemented.");
+    return this.TASKS.filter(t=>t.id === +id)[0];
+  }
+
   addTask(task: Task){
       
     //TODO: add validation
@@ -36,9 +42,6 @@ export class TaskService {
 
   removeTask(id:number){
       this.TASKS[id].isActive = false;
-  } 
-
-
-
-
+  }  
+  
 }
