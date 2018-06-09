@@ -85,3 +85,7 @@ TO explore
 2)free templates -google for 'angular 6 templates free'
 
 3) https://blog.thoughtram.io/angular/2016/02/22/angular-2-change-detection-explained.html
+
+----
+https://www.ng-book.com/2/#contents - angular topics in ng-book
+https://www.learnrxjs.io/operators/combination/combinelatest.html  - learn about rxjs
