@@ -15,3 +15,5 @@ describe('TaskService', () => {
     expect(service).toBeTruthy();
   }));  
 });
+
+//TODO: write tests similar to tests for service at https://www.sitepoint.com/angular-2-tutorial/ 

@@ -6,5 +6,33 @@
 <div *ngIf="task?.id">
 <h2>{{ task?.title | uppercase }} Details</h2>
 <div><span>Status: </span>{{task?.status}}</div>
-<div><span>Is Deleted: </span>{{task?.isActive ? 'Yes' : 'No' }}</div> TODO:create an booleanTextFilter
+<div><span>Is Active: </span>{{task?.isActive ? 'Yes' : 'No' }}</div> TODO:create an booleanTextFilter
+</div>
+
+<div>
+<div class="col-md-2">Title</div>
+<div class="col-md-10">
+  <input placeholder="provide a SMART task"  autofocus="" [(ngModel)]="taskToSave.title"/>
+  TODO:impl validaitons - required,length
+</div> 
+
+<div class="col-md-2">Status</div>
+<div class="col-md-10">
+  <input placeholder="where are you at with your task" [(ngModel)]="taskToSave.status" />
+  TODO: make it a dropdown from enum  , required
+</div> 
+ 
+
+<div class="col-md-2">Is Active</div>
+<div class="col-md-10">
+  <input  type="checkbox" [(ngModel)]="taskToSave.isActive" />
+</div> 
+
+<div class="col-md-2">
+    <button (click)="saveTask()">Save Task</button></div>
+<div class="col-md-10">
+</div> 
+
+TODO: Modify this form to use custom controls
+
 </div>
