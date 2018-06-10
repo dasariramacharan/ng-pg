@@ -13,11 +13,10 @@ import { merge   } from 'rxjs/operators'; //TODO: reduce it
 export class TaskDetailsComponent implements OnInit {
 
   task :Task;
+  taskToSave :Task = new Task();
   constructor(private route:ActivatedRoute, private taskService: TaskService) { }
 
   ngOnInit() {
- 
-      
      // https://kamranahmed.info/blog/observable2018/02/28/dealing-with-route-params-in-angular-5/
      // Combine them both into a single observable
      var paramInputs  = this.route.params.pipe(merge(this.route.queryParams));   
@@ -29,7 +28,17 @@ export class TaskDetailsComponent implements OnInit {
 	    });
   }
 
-  loadTaskDetail(id, taskInfo){
+   saveTask(){
+     //TODO: validate entity before save and show validation message
+     this.taskService.updateTask(this.taskToSave);
+
+     //TODO: on success show this or redirect
+     this.task=this.taskToSave;  
+     
+   }      
+  
+
+  private loadTaskDetail(id, taskInfo){
     if(id){
       this.task = this.taskService.getTaskById(id);     
     }

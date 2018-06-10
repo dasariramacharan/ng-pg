@@ -11,6 +11,7 @@ import { NavBarComponent } from './core/nav-bar/nav-bar.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 import { CustomAngularMaterialModule} from './custom-angular-material-module/custom-angular-material.module'
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CustomAngularMaterialModule} from './custom-angular-material-module/cus
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule, //optional module : dependency to use advanced angular material animations
     CustomAngularMaterialModule // import the custom Angular Material modules after Angular's BrowserModule, 
