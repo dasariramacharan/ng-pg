@@ -68,7 +68,7 @@ in prod - uglification , tree shaking, aot , extracting css to css files are don
  ng e2e #run end to end tests , using protractor,  Default config loc is protractor.conf.js. use --config to change
  ng e2e --element-explorer # or -ee flag to debug 
 
-  
+ ng github-pages:deploy --message 'message goes here' #creates a statig version of angular app  to deploy to github pages  
 
 
 
