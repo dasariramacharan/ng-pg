@@ -7,6 +7,16 @@
 </div>
 <fieldset>
   <legend>Main Area</legend>
+  <div>
+    <nav>
+      <a>Navigation</a>
+      <ul>
+        <li><a [routerLink]="['']">Home</a></li>
+        <li><a [routerLink]="['login']">Login</a></li>
+        <li><a [routerLink]="['tasks']">All Tasks</a></li>
+      </ul>
+    </nav>
+  </div>   
   <router-outlet></router-outlet>
 </fieldset>
 <!-- <div>
