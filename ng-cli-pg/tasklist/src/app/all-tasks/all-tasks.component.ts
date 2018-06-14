@@ -21,4 +21,14 @@ export class AllTasksComponent implements OnInit {
    this.tasks = this.taskService.getTasks();
  }
 
+ deleteTask(task){
+  this.taskService.removeTask(task.id);
+  this.reloadTasks();
+ }
+
+ unDeleteTask(task){
+  this.taskService.unDeleteTask(task.id);
+  this.reloadTasks();
+}
+
 }

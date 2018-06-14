@@ -41,7 +41,11 @@ export class TaskService {
   }
 
   removeTask(id:number){
-      this.TASKS[id].isActive = false;
-  }  
+    this.getTaskById(id).isActive = false;
+  }
+  
+  unDeleteTask(id:number){
+    this.getTaskById(id).isActive = true;
+}
   
 }

@@ -12,13 +12,15 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 import { CustomAngularMaterialModule} from './custom-angular-material-module/custom-angular-material.module'
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './core/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AllTasksComponent,
     TaskDetailsComponent,
-    NavBarComponent
+    NavBarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
