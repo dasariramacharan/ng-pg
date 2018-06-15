@@ -9,10 +9,10 @@ export class TaskService {
 
    
    TASKS : Array<Task> =  [
-     new Task({ id: 1, title:'Task 1 : not started' , status:TaskStatus.NotStarted}),
-     new Task({ id: 2, title:'Task 2 : in progress' , status:TaskStatus.InProgress}),
-     new Task({ id: 3, title:'Task 3 : complete' , status:TaskStatus.Complete}),
-     new Task({ id: 4, title:'Task 4 : on hold' , status:TaskStatus.OnHold})     
+     new Task({ id: 1, title:'Task A' , status:TaskStatus.NotStarted}),
+     new Task({ id: 2, title:'Task B' , status:TaskStatus.InProgress}),
+     new Task({ id: 3, title:'Task C' , status:TaskStatus.Complete}),
+     new Task({ id: 4, title:'Task D' , status:TaskStatus.OnHold})     
   ];
 
   constructor() { }
