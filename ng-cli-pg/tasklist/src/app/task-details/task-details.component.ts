@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TaskService } from '../core/task.service';
 import { Observable  } from 'rxjs'; //TODO: reduce it to import from only required file
 import { merge   } from 'rxjs/operators'; //TODO: reduce it
+import { TaskStatus } from '../shared/task-status.enum';
 
 @Component({
   selector: 'rd-task-details',
@@ -11,6 +12,8 @@ import { merge   } from 'rxjs/operators'; //TODO: reduce it
   styleUrls: ['./task-details.component.css']
 })
 export class TaskDetailsComponent implements OnInit {
+
+  TaskStatusEnum = TaskStatus; // allows you to use TaskStatus in template as TaskStatus[indexNo]
 
   task :Task;
   taskToSave :Task = new Task();
@@ -25,7 +28,10 @@ export class TaskDetailsComponent implements OnInit {
 	  paramInputs.subscribe(routeParams => {
         console.log(routeParams);
         this.loadTaskDetail(routeParams.id, routeParams.task);
-	    });
+      });
+      
+   console.log(this.taskService.getTaskStatuses());
+
   }
 
    saveTask(){
@@ -35,7 +41,8 @@ export class TaskDetailsComponent implements OnInit {
      //TODO: on success show this or redirect
      //this.task=this.taskToSave;  
      
-     alert('saved');
+     //todo:add toaster/notification
+     //alert('saved');
     //on sucessful save close form
     this.router.navigate([{outlets:{details:null}}]);
    }      
