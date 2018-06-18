@@ -7,13 +7,14 @@ import { LoginComponent } from './core/login/login.component';
 
 const routes: Routes = [
   {path : 'tasks', component : AllTasksComponent},
-  {path : 'task/:id', component : TaskDetailsComponent},  
+  {path : 'task/:id', component : TaskDetailsComponent, outlet:'details'},  
   {path : 'login', component : LoginComponent},  
   {path :'*' , component : AppComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes)
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

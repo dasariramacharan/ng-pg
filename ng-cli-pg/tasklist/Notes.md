@@ -70,9 +70,9 @@ in prod - uglification , tree shaking, aot , extracting css to css files are don
 
  ng github-pages:deploy --message 'message goes here' #creates a statig version of angular app  to deploy to github pages  
 
+secondary routes with params => https://vsavkin.com/angular-2-router-d9e30599f9ea
 
-
-
+using enums in templates ref :https://www.gurustop.net/blog/2016/05/24/how-to-use-typescript-enum-with-angular2/
 
  
 
@@ -85,7 +85,7 @@ TO explore
 2)free templates -google for 'angular 6 templates free'
 
 3) https://blog.thoughtram.io/angular/2016/02/22/angular-2-change-detection-explained.html
-
+ 
 ----
 https://www.ng-book.com/2/#contents - angular topics in ng-book
 https://www.learnrxjs.io/operators/combination/combinelatest.html  - learn about rxjs

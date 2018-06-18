@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../core/task.service';
 import { Task } from '../task/task';
+import { TaskStatus } from '../shared/task-status.enum';
 
 @Component({
   selector: 'rd-all-tasks',
@@ -8,7 +9,8 @@ import { Task } from '../task/task';
   styleUrls: ['./all-tasks.component.css']
 })
 export class AllTasksComponent implements OnInit {
-
+ 
+  TaskStatus = TaskStatus; // allows you to use TaskStatus in template as TaskStatus[indexNo]
   tasks :Task[];
   
   constructor(private taskService : TaskService) { }

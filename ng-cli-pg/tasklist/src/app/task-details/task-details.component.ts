@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../task/task';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TaskService } from '../core/task.service';
 import { Observable  } from 'rxjs'; //TODO: reduce it to import from only required file
 import { merge   } from 'rxjs/operators'; //TODO: reduce it
+import { TaskStatus } from '../shared/task-status.enum';
 
 @Component({
   selector: 'rd-task-details',
@@ -12,9 +13,11 @@ import { merge   } from 'rxjs/operators'; //TODO: reduce it
 })
 export class TaskDetailsComponent implements OnInit {
 
+  TaskStatusEnum = TaskStatus; // allows you to use TaskStatus in template as TaskStatus[indexNo]
+
   task :Task;
   taskToSave :Task = new Task();
-  constructor(private route:ActivatedRoute, private taskService: TaskService) { }
+  constructor(private route:ActivatedRoute, private taskService: TaskService, private router:Router) { }
 
   ngOnInit() {
      // https://kamranahmed.info/blog/observable2018/02/28/dealing-with-route-params-in-angular-5/
@@ -25,7 +28,10 @@ export class TaskDetailsComponent implements OnInit {
 	  paramInputs.subscribe(routeParams => {
         console.log(routeParams);
         this.loadTaskDetail(routeParams.id, routeParams.task);
-	    });
+      });
+      
+   console.log(this.taskService.getTaskStatuses());
+
   }
 
    saveTask(){
@@ -33,8 +39,12 @@ export class TaskDetailsComponent implements OnInit {
      this.taskService.updateTask(this.taskToSave);
 
      //TODO: on success show this or redirect
-     this.task=this.taskToSave;  
+     //this.task=this.taskToSave;  
      
+     //todo:add toaster/notification
+     //alert('saved');
+    //on sucessful save close form
+    this.router.navigate([{outlets:{details:null}}]);
    }      
   
 
@@ -46,5 +56,4 @@ export class TaskDetailsComponent implements OnInit {
       this.task = taskInfo;
     }
   }
-
 }
