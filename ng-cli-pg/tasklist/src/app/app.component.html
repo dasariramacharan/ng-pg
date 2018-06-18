@@ -16,8 +16,12 @@
         <li><a [routerLink]="['tasks']">All Tasks</a></li>
       </ul>
     </nav>
+  </div>
+  <div class="row">
+      <div class="col-lg-6">      <router-outlet></router-outlet> </div>
+      <div class="col-lg-6">      <router-outlet name="details"></router-outlet> </div>
   </div>   
-  <router-outlet></router-outlet>
+ 
 </fieldset>
 <!-- <div>
 <h2>Here are some links to help you start: </h2>

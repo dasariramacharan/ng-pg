@@ -6,7 +6,7 @@
     <li *ngFor="let task of tasks">
       <div class="col-md-4">{{ task.title }}</div>
       <div class="col-md-2">{{ task.status }}</div>
-      <div class="col-md-2"><a [routerLink]="['../task',task.id]">Edit</a></div>  
+      <div class="col-md-2"><a [routerLink]="['/',{ outlets: { details:['task',task.id]}}]">Edit</a></div>  
       <button class="col-md-2" *ngIf="task.isActive" (click)="deleteTask(task)"> delete</button>
       <button class="col-md-2" *ngIf="!task.isActive" (click)="unDeleteTask(task)">unDelete</button>
     </li>
