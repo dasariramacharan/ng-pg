@@ -1,35 +1,38 @@
 <!-- <p>
   task-details works!
 </p> -->
-
+<!-- 
 {{!task ? 'No task data exists.':''}}
 <div *ngIf="task?.id">
 <h2>{{ task?.title | uppercase }} Details</h2>
 <div><span>Status: </span>{{task?.status}}</div>
 <div><span>Is Active: </span>{{task?.isActive ? 'Yes' : 'No' }}</div> TODO:create an booleanTextFilter
-</div>
-
-<div>
+</div> -->
+<h1>Task Details</h1>
+<div class="row">
 <div class="col-md-2">Title</div>
 <div class="col-md-10">
-  <input placeholder="provide a SMART task"  autofocus="" [(ngModel)]="taskToSave.title"/>
+  <input placeholder="provide a SMART task"  autofocus="" [(ngModel)]="task.title"/>
   TODO:impl validaitons - required,length
 </div> 
 
 <div class="col-md-2">Status</div>
 <div class="col-md-10">
-  <input placeholder="where are you at with your task" [(ngModel)]="taskToSave.status" />
-  TODO: make it a dropdown from enum  , required
+<select [(ngModel)]="task.status" required>
+  <option *ngFor="let status of taskStatuses" [value]="status.key"> {{status.value}}</option>
+</select>  TODO: impl required
 </div> 
  
 
 <div class="col-md-2">Is Active</div>
 <div class="col-md-10">
-  <input  type="checkbox" [(ngModel)]="taskToSave.isActive" />
+  <input  type="checkbox" [(ngModel)]="task.isActive" />
 </div> 
 
 <div class="col-md-2">
-    <button (click)="saveTask()">Save Task</button></div>
+    <button (click)="saveTask()">Save Task</button>
+    <button (click)="cancel()">Cancel</button>
+  </div>
 <div class="col-md-10">
 </div> 
 

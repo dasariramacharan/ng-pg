@@ -1,4 +1,4 @@
 export class KeyValue {
-    constructor(private key:number,private value:string){
+    constructor(public key:number,public value:string){
     }
 }

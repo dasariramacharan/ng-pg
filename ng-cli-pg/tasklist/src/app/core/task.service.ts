@@ -42,8 +42,8 @@ export class TaskService {
 
   updateTask(task: Task) {
     //TODO: add validation
-
-    this.TASKS[task.id] = task;
+     console.log(task);
+     this.TASKS[task.id] = task;
   }
 
   removeTask(id: number) {
