@@ -24,16 +24,17 @@
 </div> 
  
 
-<div class="col-md-2">Is Active</div>
-<div class="col-md-10">
+<div class="col-md-2" *ngIf="task.id > 0">Is Active</div>
+<div class="col-md-10" *ngIf="task.id > 0">
   <input  type="checkbox" [(ngModel)]="task.isActive" />
 </div> 
 
-<div class="col-md-2">
+<div class="col-md-6">
     <button (click)="saveTask()">Save Task</button>
-    <button (click)="cancel()">Cancel</button>
   </div>
-<div class="col-md-10">
+
+  <div class="col-md-6">
+      <button (click)="cancel()">Cancel</button>
 </div> 
 
 TODO: Modify this form to use custom controls

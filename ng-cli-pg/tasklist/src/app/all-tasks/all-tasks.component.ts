@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../core/task.service';
 import { Task } from '../task/task';
 import { TaskStatus } from '../shared/task-status.enum';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'rd-all-tasks',
@@ -13,7 +14,7 @@ export class AllTasksComponent implements OnInit {
   TaskStatus = TaskStatus; // allows you to use TaskStatus in template as TaskStatus[indexNo]
   tasks :Task[];
   
-  constructor(private taskService : TaskService) { }
+  constructor(private taskService : TaskService, private router:Router) { }
 
   ngOnInit() {
    this.reloadTasks();
@@ -31,6 +32,10 @@ export class AllTasksComponent implements OnInit {
  unDeleteTask(task){
   this.taskService.unDeleteTask(task.id);
   this.reloadTasks();
+}
+
+  addTask(){
+  this.router.navigate([{outlets:{details:['task',0]}}])
 }
 
 }

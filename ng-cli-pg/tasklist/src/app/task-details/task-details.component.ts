@@ -36,7 +36,12 @@ export class TaskDetailsComponent implements OnInit {
 
    saveTask(){
      //TODO: validate entity before save and show validation message
-     this.taskService.updateTask(this.task);
+     if (this.task.id == 0){
+       this.taskService.addTask(this.task);
+     }
+     else{
+      this.taskService.updateTask(this.task);
+     }
 
      //TODO: on success show this or redirect
      //this.task=this.taskToSave;  
