@@ -30,7 +30,7 @@ ng config [key] [value] Get/set configuration values / project wise settings. [k
     If only the [key] is provided it will get the value. 
     If both the [key] and [value] are provided it will set the value.
 
- ng g c componentname
+ ng g c componentname #https://github.com/angular/angular-cli/wiki/generate-component
  ng g s servicename
  ng g cl classname
  ng g d directivename
