@@ -13,7 +13,8 @@ export class AllTasksComponent implements OnInit {
  
   TaskStatus = TaskStatus; // allows you to use TaskStatus in template as TaskStatus[indexNo]
   tasks :Task[];
-  
+  selectedTask : Task;
+
   constructor(private taskService : TaskService, private router:Router) { }
 
   ngOnInit() {
@@ -37,5 +38,10 @@ export class AllTasksComponent implements OnInit {
   addTask(){
   this.router.navigate([{outlets:{details:['task',0]}}])
 }
+
+editTask(task :Task){
+  this.selectedTask= task;
+  this.router.navigate([{outlets:{details:['task', task.id]}}]);
+ }
 
 }
