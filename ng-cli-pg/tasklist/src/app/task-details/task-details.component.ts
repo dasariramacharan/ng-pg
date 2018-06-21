@@ -5,6 +5,7 @@ import { TaskService } from '../core/task.service';
 import { Observable  } from 'rxjs'; //TODO: reduce it to import from only required file
 import { merge   } from 'rxjs/operators'; //TODO: reduce it
 import { TaskStatus } from '../shared/task-status.enum';
+import { KeyValue } from '../shared/key-value';
 
 @Component({
   selector: 'rd-task-details',
@@ -16,7 +17,7 @@ export class TaskDetailsComponent implements OnInit {
   TaskStatusEnum = TaskStatus; // allows you to use TaskStatus in template as TaskStatus[indexNo]
 
   task :Task;
-  taskToSave :Task = new Task();
+  taskStatuses : KeyValue[];
   constructor(private route:ActivatedRoute, private taskService: TaskService, private router:Router) { }
 
   ngOnInit() {
@@ -30,13 +31,17 @@ export class TaskDetailsComponent implements OnInit {
         this.loadTaskDetail(routeParams.id, routeParams.task);
       });
       
-   console.log(this.taskService.getTaskStatuses());
-
+     this.taskStatuses = this.taskService.getTaskStatuses();
   }
 
    saveTask(){
      //TODO: validate entity before save and show validation message
-     this.taskService.updateTask(this.taskToSave);
+     if (this.task.id == 0){
+       this.taskService.addTask(this.task);
+     }
+     else{
+      this.taskService.updateTask(this.task);
+     }
 
      //TODO: on success show this or redirect
      //this.task=this.taskToSave;  
@@ -47,13 +52,16 @@ export class TaskDetailsComponent implements OnInit {
     this.router.navigate([{outlets:{details:null}}]);
    }      
   
+   cancel(){
+    this.router.navigate([{outlets:{details:null}}]);
+   }
 
   private loadTaskDetail(id, taskInfo){
     if(id){
-      this.task = this.taskService.getTaskById(id);     
+      this.task = {...this.taskService.getTaskById(id)};     
     }
     else if(taskInfo){
-      this.task = taskInfo;
+      this.task = {...taskInfo};
     }
   }
 }
