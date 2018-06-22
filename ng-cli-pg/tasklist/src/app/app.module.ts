@@ -27,11 +27,10 @@ import { PeopleRoutingModule } from 'src/app/people/people-routing.module';
   imports: [
     BrowserModule,
     FormsModule,
-    PeopleRoutingModule, //TODO: change to lazy loading
-    AppRoutingModule,
     BrowserAnimationsModule, //optional module : dependency to use advanced angular material animations
     CustomAngularMaterialModule, // import the custom Angular Material modules after Angular's BrowserModule, 
-    PeopleModule //TODO: change to lazy loading
+    PeopleModule, //TODO: change to lazy loading
+    AppRoutingModule // should be last
   ],
   providers: [TaskService],
   bootstrap: [AppComponent]

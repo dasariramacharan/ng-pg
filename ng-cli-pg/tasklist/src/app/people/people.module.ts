@@ -9,8 +9,8 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
-    FormsModule,
     CommonModule,
+    FormsModule,
     PeopleRoutingModule
   ],
   declarations: [AllPeopleComponent, PersonComponent, PeopleDashboardComponent]

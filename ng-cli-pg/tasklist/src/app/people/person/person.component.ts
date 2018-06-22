@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Person } from '../person';
 
 @Component({
   selector: 'rd-person',

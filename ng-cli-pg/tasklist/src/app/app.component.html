@@ -12,7 +12,8 @@
         <li><a [routerLink]="['']">Home</a></li>
         <li><a [routerLink]="['login']">Login</a></li>
         <li><a [routerLink]="['tasks']">All Tasks</a></li>
-        <li><a [routerLink]="['people']">All People</a></li>  
+        <li><a [routerLink]="['people']" (click)="routeTo('people')" >All People</a></li>  
+        <!-- <li><a [routerLink]="['people',{ outlets : { details : null}}]">All People</a></li>   -->
       </ul>
     </nav>
   </div>
