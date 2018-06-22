@@ -13,6 +13,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { CustomAngularMaterialModule} from './custom-angular-material-module/custom-angular-material.module'
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './core/login/login.component';
+import { PeopleModule } from './people/people.module';
+import { PeopleRoutingModule } from 'src/app/people/people-routing.module';
 
 @NgModule({
   declarations: [
@@ -25,9 +27,11 @@ import { LoginComponent } from './core/login/login.component';
   imports: [
     BrowserModule,
     FormsModule,
+    PeopleRoutingModule, //TODO: change to lazy loading
     AppRoutingModule,
     BrowserAnimationsModule, //optional module : dependency to use advanced angular material animations
-    CustomAngularMaterialModule // import the custom Angular Material modules after Angular's BrowserModule, 
+    CustomAngularMaterialModule, // import the custom Angular Material modules after Angular's BrowserModule, 
+    PeopleModule //TODO: change to lazy loading
   ],
   providers: [TaskService],
   bootstrap: [AppComponent]
