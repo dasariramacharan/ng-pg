@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Person } from '../person';
 
 @Component({
   selector: 'rd-person',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class PersonComponent implements OnInit {
-
+   
+  @Input() person : Person;
   constructor() { }
 
   ngOnInit() {
