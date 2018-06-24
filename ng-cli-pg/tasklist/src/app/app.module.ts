@@ -14,7 +14,6 @@ import { CustomAngularMaterialModule} from './custom-angular-material-module/cus
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './core/login/login.component';
 import { PeopleModule } from './people/people.module';
-import { PeopleRoutingModule } from 'src/app/people/people-routing.module';
 
 @NgModule({
   declarations: [
