@@ -2,8 +2,12 @@
     <h2><span *ngIf="person?.id == 0"> New</span>Person Details <span  *ngIf="person?.id > 0"> for {{person?.id}}</span></h2>
 </div>
 
-<div class="row">
+<div class="row" *ngIf="isEditMode">
  <label class="col-md-4">Name</label>
  <input class="col-md-8" [(ngModel)]="person.name" placeholder="enter person name"/>
+</div>
+
+<div class="row" *ngIf="!isEditMode">
+   Name: {{person?.name}}
 </div>
 

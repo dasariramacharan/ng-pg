@@ -7,6 +7,8 @@ import { Person } from '../person';
   styleUrls: ['./people-dashboard.component.css']
 })
 export class PeopleDashboardComponent implements OnInit {
+  selectedPerson: Person;
+  isEditMode: boolean;
 
   constructor() { }
 
@@ -14,10 +16,17 @@ export class PeopleDashboardComponent implements OnInit {
   }
   
   PEOPLE : Person[] =[
-    { id : 1, name :'Ram' },
-    { id : 2, name :'Ome' },
-    { id : 3, name :'Sindhuvu' },
-    { id : 4, name :'Jnanatirtha' }
+    { id : 1, name :'Andy' },
+    { id : 2, name :'Ben' },
+    { id : 3, name :'Chris' },
+    { id : 4, name :'Dan' }
   ]; 
+
+
+  onPersonSelected(personid){
+    this.selectedPerson = this.PEOPLE.filter(p=>p.id==personid)[0];
+    this.isEditMode = personid > 0; 
+  }
+
 
 }

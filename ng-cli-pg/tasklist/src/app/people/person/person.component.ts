@@ -7,7 +7,7 @@ import { Person } from '../person';
   styles: []
 })
 export class PersonComponent implements OnInit {
-   
+  @Input() isEditMode : boolean;
   @Input() person : Person;
   constructor() { }
 
