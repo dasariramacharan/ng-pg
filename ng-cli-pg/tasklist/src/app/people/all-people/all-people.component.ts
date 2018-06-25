@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Person } from '../person';
 
 @Component({
@@ -13,6 +13,8 @@ import { Person } from '../person';
 export class AllPeopleComponent implements OnInit {
   
   @Input() people : Person[];
+  @Output() personSelected = new EventEmitter(); 
+  
   selectedPerson: Person;
   
   constructor() { }
@@ -21,6 +23,7 @@ export class AllPeopleComponent implements OnInit {
   }
 
   onSelectPerson(person){
-    this.selectedPerson = person;  
+    this.selectedPerson = person; 
+    this.personSelected.emit(this.selectedPerson.id); 
   }
 }

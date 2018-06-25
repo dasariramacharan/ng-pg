@@ -7,6 +7,8 @@ import { Person } from '../person';
   styleUrls: ['./people-dashboard.component.css']
 })
 export class PeopleDashboardComponent implements OnInit {
+  selectedPerson: Person;
+  isEditMode: boolean;
 
   constructor() { }
 
@@ -19,5 +21,12 @@ export class PeopleDashboardComponent implements OnInit {
     { id : 3, name :'Chris' },
     { id : 4, name :'Dan' }
   ]; 
+
+
+  onPersonSelected(personid){
+    this.selectedPerson = this.PEOPLE.filter(p=>p.id==personid)[0];
+    this.isEditMode = personid > 0; 
+  }
+
 
 }
