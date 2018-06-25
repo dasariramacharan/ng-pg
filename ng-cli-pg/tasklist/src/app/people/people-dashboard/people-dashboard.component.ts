@@ -14,10 +14,10 @@ export class PeopleDashboardComponent implements OnInit {
   }
   
   PEOPLE : Person[] =[
-    { id : 1, name :'Ram' },
-    { id : 2, name :'Ome' },
-    { id : 3, name :'Sindhuvu' },
-    { id : 4, name :'Jnanatirtha' }
+    { id : 1, name :'Andy' },
+    { id : 2, name :'Ben' },
+    { id : 3, name :'Chris' },
+    { id : 4, name :'Dan' }
   ]; 
 
 }
