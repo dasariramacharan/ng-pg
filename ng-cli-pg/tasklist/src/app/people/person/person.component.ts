@@ -11,6 +11,7 @@ export class PersonComponent implements OnInit, OnChanges {
   @Input() person: Person;
   personUnderEdit: Person;
   @Output() onDataSaved = new EventEmitter();
+  isEdit: boolean;
   constructor() { }
 
   ngOnInit() {
@@ -25,6 +26,7 @@ export class PersonComponent implements OnInit, OnChanges {
     else {
       this.personUnderEdit = null;
     }
+    this.isEdit = this.isEditMode;
   }
 
   savePerson() {
@@ -33,7 +35,7 @@ export class PersonComponent implements OnInit, OnChanges {
 
   cancel() {
      this.personUnderEdit = null;
-     this.isEditMode = false;
+     this.isEdit = false;
      this.person = null;
   }
 }
