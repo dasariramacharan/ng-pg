@@ -8,7 +8,7 @@ import { Person } from '../person';
 })
 export class PeopleDashboardComponent implements OnInit {
   selectedPerson: Person;
-  isEditMode: boolean;
+  isEditModeValue: boolean;
 
   constructor() { }
 
@@ -25,8 +25,17 @@ export class PeopleDashboardComponent implements OnInit {
 
   onPersonSelected(personid){
     this.selectedPerson = this.PEOPLE.filter(p=>p.id==personid)[0];
-    this.isEditMode = personid > 0; 
+    this.isEditModeValue = personid > 0; 
+    ;
   }
 
-
+  onDataSaved(person){
+    //this.PEOPLE.filter(p=> p.id == person.id)[0] = person;//does not work .. why?
+    let itemindex = this.PEOPLE.findIndex(p=>p.id==person.id);
+    this.PEOPLE[itemindex] = person;
+    
+    //check PEOPLE listing updated with above line 
+    console.log(person);
+    console.log(this.PEOPLE)
+  }
 }
