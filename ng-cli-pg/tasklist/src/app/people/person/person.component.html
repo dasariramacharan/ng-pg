@@ -4,10 +4,14 @@
 
 <div class="row" *ngIf="isEditMode">
  <label class="col-md-4">Name</label>
- <input class="col-md-8" [(ngModel)]="person.name" placeholder="enter person name"/>
+ <input class="col-md-8" [(ngModel)]="personUnderEdit.name" placeholder="enter person name"/>
 </div>
 
 <div class="row" *ngIf="!isEditMode">
    Name: {{person?.name}}
 </div>
 
+<div class="row" *ngIf="isEditMode">
+    <button (click)="savePerson()">Save</button>
+    <button (click)="cancel()">Cancel</button>
+</div>

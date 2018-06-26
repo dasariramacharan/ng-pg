@@ -1,6 +1,11 @@
 <p>
   people-dashboard works!
 </p>
-<rd-all-people [people]="PEOPLE" (personSelected)="onPersonSelected($event)" ></rd-all-people>
-<br/>
-<rd-person [person]="selectedPerson" [isEditMode]="isEditMode"></rd-person>
+<div class="row">
+  <div class="col-md-6">
+    <rd-all-people [people]="PEOPLE" (personSelected)="onPersonSelected($event)"></rd-all-people>
+  </div>
+  <div class="col-md-6">
+    <rd-person [person]="selectedPerson" [isEditMode]="isEditMode" (onDataSaved)="onDataSaved($event)"></rd-person>
+  </div>
+</div>

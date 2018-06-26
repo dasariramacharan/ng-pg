@@ -28,5 +28,13 @@ export class PeopleDashboardComponent implements OnInit {
     this.isEditMode = personid > 0; 
   }
 
-
+  onDataSaved(person){
+    //this.PEOPLE.filter(p=> p.id == person.id)[0] = person;//does not work .. why?
+    let itemindex = this.PEOPLE.findIndex(p=>p.id==person.id);
+    this.PEOPLE[itemindex] = person;
+    
+    //check PEOPLE listing updated with above line 
+    console.log(person);
+    console.log(this.PEOPLE)
+  }
 }
