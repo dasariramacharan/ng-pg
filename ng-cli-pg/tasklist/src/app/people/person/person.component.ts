@@ -36,6 +36,6 @@ export class PersonComponent implements OnInit, OnChanges {
   cancel() {
      this.personUnderEdit = null;
      this.isEdit = false;
-     this.person = null;
+     //this.person = null; //Lesson Learnt : dont modify input/ouput properties they break the link if input/ouput properties are not objects
   }
 }

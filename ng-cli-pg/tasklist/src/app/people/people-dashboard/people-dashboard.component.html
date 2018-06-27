@@ -3,7 +3,7 @@
 </p>
 <div class="row">
   <div class="col-md-6">
-    <rd-all-people [people]="PEOPLE" (personSelected)="onPersonSelected($event)"></rd-all-people>
+    <rd-all-people [people]="people" (personSelected)="onPersonSelected($event)"></rd-all-people>
   </div>
   <div class="col-md-6">
     <rd-person [person]="selectedPerson" [isEditMode]="isEditModeValue" (onDataSaved)="onDataSaved($event)"></rd-person>
