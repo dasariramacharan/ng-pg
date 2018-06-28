@@ -20,7 +20,9 @@ export class PeopleDashboardComponent implements OnInit {
   }
 
   getPeople() :void{
-    this.people = this.peopleService.getPeople();
+
+    this.peopleService.getPeople()
+                      .subscribe(people => this.people = people);
   }
   
   onPersonSelected(personid){

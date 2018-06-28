@@ -14,6 +14,10 @@ import { CustomAngularMaterialModule} from './custom-angular-material-module/cus
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './core/login/login.component';
 import { PeopleModule } from './people/people.module';
+import { MessagesComponent } from './core/messages/messages.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule} from'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,8 @@ import { PeopleModule } from './people/people.module';
     AllTasksComponent,
     TaskDetailsComponent,
     NavBarComponent,
-    LoginComponent
+    LoginComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +34,15 @@ import { PeopleModule } from './people/people.module';
     BrowserAnimationsModule, //optional module : dependency to use advanced angular material animations
     CustomAngularMaterialModule, // import the custom Angular Material modules after Angular's BrowserModule, 
     PeopleModule, //TODO: change to lazy loading
-    AppRoutingModule // should be last
+    AppRoutingModule, // should be last
+    HttpClientModule,
+ 
+  // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+  // and returns simulated server responses.
+  // Remove it when a real server is ready to receive requests.
+  HttpClientInMemoryWebApiModule.forRoot(
+  InMemoryDataService, { dataEncapsulation: false })
+
   ],
   providers: [TaskService],
   bootstrap: [AppComponent]
