@@ -91,3 +91,8 @@ https://www.learnrxjs.io/operators/combination/combinelatest.html  - learn about
 secondary routes with params => https://vsavkin.com/angular-2-router-d9e30599f9ea
 
 using enums in templates ref :https://www.gurustop.net/blog/2016/05/24/how-to-use-typescript-enum-with-angular2/
+
+
+---------------------
+1) If you want to turn this warning off, type this in the git command line
+git config --global core.autocrlf false
