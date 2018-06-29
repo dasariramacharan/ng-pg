@@ -22,7 +22,7 @@ export class PeopleDashboardComponent implements OnInit {
   getPeople() :void{
 
     this.peopleService.getPeople()
-                      .subscribe(people => this.people = people);
+                      .subscribe(people => this.people = people.splice(1,5));
   }
   
   onPersonSelected(personid){
@@ -40,4 +40,10 @@ export class PeopleDashboardComponent implements OnInit {
     console.log(person);
     console.log(this.people)
   }
+
+
+
+
+  
+
 }
