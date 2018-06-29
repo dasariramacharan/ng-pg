@@ -11,7 +11,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class PeopleService {
   
   private peopleUrl ='api/people'; //url to web api
-
+  
   constructor(private http:HttpClient,
     private messageService:MessageService) { }
  
@@ -21,12 +21,13 @@ export class PeopleService {
      .pipe(
       //RxJS tap operator, which looks at the observable values, does something with those values, and passes them along.
       // The tap call back doesn't touch the values themselves.
-      tap(heroes => this.log(`fetched heroes`)),      
+      tap(people => this.log(`fetched people`)),      
       
-      catchError(this.handleError('getHeroes', []))
+      catchError(this.handleError('getPeople', []))
     );
    }
-  
+
+   /** GET person by id. Will 404 if id not found */
    getPerson(id:number):Observable<Person>{
      
     const url =`${this.peopleUrl}/${id}`;
@@ -37,7 +38,15 @@ export class PeopleService {
     );
    }
 
-
+   /** PUT: update the hero on the server */
+  updatePerson (person: Person): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({'Content-type':'application/json'})};
+  
+    return this.http.put(this.peopleUrl, person, httpOptions).pipe(
+      tap(_ => this.log(`updated person id=${person.id}`)),
+      catchError(this.handleError<any>('updatePerson'))
+    );
+  }
 
 
 

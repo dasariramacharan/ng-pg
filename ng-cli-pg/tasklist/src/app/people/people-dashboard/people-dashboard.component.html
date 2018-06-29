@@ -2,10 +2,19 @@
   people-dashboard works!
 </p>
 <div class="row">
+  <!-- Version 1 with details in the same page 
   <div class="col-md-6">
     <rd-all-people [people]="people" (personSelected)="onPersonSelected($event)"></rd-all-people>
   </div>
-  <div class="col-md-6">
+       shows how to use input and output properties 
+    <div class="col-md-6">
     <rd-person [person]="selectedPerson" [isEditMode]="isEditModeValue" (onDataSaved)="onDataSaved($event)"></rd-person>
-  </div>
+  </div> 
+-->
+
+
+<div class="col-md-2" *ngFor="let person of people">
+  <a  routerLink="/people/{{person.id}}">{{person.name}}</a>
+</div>
+
 </div>
