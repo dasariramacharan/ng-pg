@@ -6,5 +6,10 @@
   <li *ngFor="let person of people"
       (click)="onSelectPerson(person)"
       [class.selected]="person === selectedPeron">
-    <span>{{person.id}}</span>.&nbsp;<button class="data-style">{{person.name}}</button></li>
+    <span>{{person.id}}</span>.&nbsp;
+    <button class="data-style">{{person.name}}</button>
+    <button  title="(x)"  (click)="delete(person)" style="margin-left: 5px"></button>
+  </li>
 </ul>
+
+TODO:populate this page

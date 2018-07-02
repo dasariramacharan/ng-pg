@@ -12,7 +12,7 @@ import { Location } from '@angular/common';
 export class PersonComponent implements OnInit, OnChanges {
   @Input() isEditMode: boolean;
   @Input() person: Person;
-  personUnderEdit: Person;
+  personUnderEdit: Person = new Person();
   @Output() onDataSaved = new EventEmitter();
   isEdit: boolean;
   constructor( private route:ActivatedRoute, private personService:PeopleService, private location:Location) { 
@@ -22,11 +22,20 @@ export class PersonComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.personService.getPerson(id)
+    
+    if(id > 0){
+      this.personService.getPerson(id)
       .subscribe(person =>{
         this.personUnderEdit = person;
         this.person = person;
-      }); 
+      });
+    }
+    else{
+      //Add Scenario
+      this.personUnderEdit = new Person();
+      this.person = new Person();    
+    }
+    this.isEdit = true;      
   }
 
   ngOnChanges() {
@@ -42,15 +51,31 @@ export class PersonComponent implements OnInit, OnChanges {
   }
 
   savePerson() {
+    this.personUnderEdit.name = this.personUnderEdit.name.trim();
+
+    if(!this.personUnderEdit.name){return;}
+
+    if (this.personUnderEdit.id){
+      this.personService.updatePerson(this.personUnderEdit).subscribe( ()=> this.cancel());
+    } 
+    else {
+      this.personService.addPerson(this.personUnderEdit)
+      .subscribe(person => {
+        //this.isEdit = false;
+        //this.personUnderEdit = person; //to update the id of displayed personE
+        console.log('added person' + JSON.stringify(person)); //Note the usage of json.stringify to show the person info
+        this.location.back(); 
+      });
+        }    
+    
     this.onDataSaved.emit(this.personUnderEdit);
   }
 
   cancel() {
-    debugger;
      this.personUnderEdit = null;
      this.isEdit = false;
      //navigates backward one step in the browser's history stack using the Location service
-     this.location.back(); //TODO:Rama fix this is not working to go back .
+     this.location.back(); 
      //this.person = null; //Lesson Learnt : dont modify input/ouput properties they break the link if input/ouput properties are not objects
   }
 }

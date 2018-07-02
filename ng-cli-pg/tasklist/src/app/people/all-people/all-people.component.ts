@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Person } from '../person';
+import { PeopleService } from '../shared/people.service';
 
 @Component({
   selector: 'rd-all-people',
@@ -17,7 +18,7 @@ export class AllPeopleComponent implements OnInit {
   
   selectedPerson: Person;
   
-  constructor() { }
+  constructor(private peopleService: PeopleService) { }
 
   ngOnInit() {
   }
@@ -25,5 +26,10 @@ export class AllPeopleComponent implements OnInit {
   onSelectPerson(person){
     this.selectedPerson = person; 
     this.personSelected.emit(this.selectedPerson.id); 
+  }
+
+  delete(person){
+    this.people = this.people.filter(p=>p.id != person.id);
+    this.peopleService.deletePerson(person).subscribe();
   }
 }
