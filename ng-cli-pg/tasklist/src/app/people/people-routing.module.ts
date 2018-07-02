@@ -8,8 +8,8 @@ const routes: Routes = [
   //TODO: declare common route as 'people' for all items in this list how??
   //      basically how to do it for child module.. is it as child routes under one root?
   {path : 'people/dashboard', component : PeopleDashboardComponent},
-  {path : 'people/:id', component : PersonComponent}, //TODO:rename to personDetailComponent
   {path : 'people/all', component: AllPeopleComponent},
+  {path : 'people/:id', component : PersonComponent}, //TODO:rename to personDetailComponent
   {path : 'people',redirectTo : 'people/dashboard', pathMatch:'full'}
 ];
 

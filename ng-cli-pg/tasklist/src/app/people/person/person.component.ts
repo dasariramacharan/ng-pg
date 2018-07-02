@@ -12,7 +12,7 @@ import { Location } from '@angular/common';
 export class PersonComponent implements OnInit, OnChanges {
   @Input() isEditMode: boolean;
   @Input() person: Person;
-  personUnderEdit: Person;
+  personUnderEdit: Person = new Person();
   @Output() onDataSaved = new EventEmitter();
   isEdit: boolean;
   constructor( private route:ActivatedRoute, private personService:PeopleService, private location:Location) { 
@@ -63,7 +63,7 @@ export class PersonComponent implements OnInit, OnChanges {
       .subscribe(person => {
         //this.isEdit = false;
         //this.personUnderEdit = person; //to update the id of displayed personE
-        console.log('added person' + person);
+        console.log('added person' + JSON.stringify(person)); //Note the usage of json.stringify to show the person info
         this.location.back(); 
       });
         }    
