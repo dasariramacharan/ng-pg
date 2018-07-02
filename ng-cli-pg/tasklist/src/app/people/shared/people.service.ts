@@ -11,6 +11,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class PeopleService {
   
   private peopleUrl ='api/people'; //url to web api
+  private httpOptions = { headers: new HttpHeaders({'Content-type':'application/json'})};
   
   constructor(private http:HttpClient,
     private messageService:MessageService) { }
@@ -38,24 +39,30 @@ export class PeopleService {
     );
    }
 
-   /** PUT: update the hero on the server */
+   /** PUT: update the person on the server */
   updatePerson (person: Person): Observable<any> {
-    const httpOptions = { headers: new HttpHeaders({'Content-type':'application/json'})};
   
-    return this.http.put(this.peopleUrl, person, httpOptions).pipe(
+    return this.http.put(this.peopleUrl, person, this.httpOptions).pipe(
       tap(_ => this.log(`updated person id=${person.id}`)),
       catchError(this.handleError<any>('updatePerson'))
     );
   }
 
-
+  
+  /** POST: add a new person to the server */
+addPerson (person: Person): Observable<Person> {
+  return this.http.post<Person>(this.peopleUrl, person, this.httpOptions).pipe(
+    tap((person: Person) => this.log(`added person w/ id=${person.id}`)),
+    catchError(this.handleError<Person>('addPerson'))
+  );
+}
 
 
 
 
 
    private log(message: string) {
-    this.messageService.add('HeroService: ' + message);
+    this.messageService.add('PersonService: ' + message);
   }
 
 /**
