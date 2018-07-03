@@ -6,6 +6,7 @@ import { AllPeopleComponent } from './all-people/all-people.component';
 import { PersonComponent } from './person/person.component';
 import { PeopleDashboardComponent } from './people-dashboard/people-dashboard.component';
 import { FormsModule } from '@angular/forms';
+import { PersonSearchComponent } from './person-search/person-search.component';
 
 @NgModule({
   imports: [
@@ -13,6 +14,6 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     PeopleRoutingModule
   ],
-  declarations: [AllPeopleComponent, PersonComponent, PeopleDashboardComponent]
+  declarations: [AllPeopleComponent, PersonComponent, PeopleDashboardComponent, PersonSearchComponent]
 })
 export class PeopleModule { }

@@ -1,0 +1,11 @@
+<p>
+  person-search works!
+</p>
+<input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+<ul style="background-color:aquamarine">
+  <li *ngFor="let person of searchResults$ | async">
+    <a routerLink="/people/{{person.id}}">
+        {{person.name}}
+    </a>
+  </li>
+</ul> 
