@@ -68,6 +68,20 @@ deletePerson (person: Person | number): Observable<Person> {
   );
 }
 
+ /* GET persones whose name contains search term */
+ searchPersons(term: string): Observable<Person[]> {
+  if (!term.trim()) {
+    // if not search term, return empty person array.
+    return of([]);
+  }
+  return this.http.get<Person[]>(`${this.peopleUrl}/?name=${term}`).pipe(
+    tap(_ => this.log(`found persons matching "${term}"`)),
+    catchError(this.handleError<Person[]>('searchPersones', []))
+  );
+}
+
+
+
 
 
 
