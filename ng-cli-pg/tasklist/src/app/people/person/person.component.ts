@@ -1,4 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter,
+        OnInit, OnChanges,
+        OnDestroy, DoCheck, AfterContentInit, AfterViewInit,
+        AfterViewChecked, AfterContentChecked } from '@angular/core';
 import { Person } from '../person';
 import { PeopleService } from '../shared/people.service';
 import { ActivatedRoute } from '@angular/router';
@@ -9,7 +12,11 @@ import { Location } from '@angular/common';
   templateUrl: './person.component.html',
   styles: []
 })
-export class PersonComponent implements OnInit, OnChanges {
+export class PersonComponent implements OnInit, OnChanges, 
+DoCheck,
+AfterContentInit, AfterContentChecked,
+AfterViewInit, AfterViewChecked,
+OnDestroy  {
   @Input() isEditMode: boolean;
   @Input() person: Person;
   personUnderEdit: Person = new Person();
@@ -78,4 +85,25 @@ export class PersonComponent implements OnInit, OnChanges {
      this.location.back(); 
      //this.person = null; //Lesson Learnt : dont modify input/ouput properties they break the link if input/ouput properties are not objects
   }
+
+ logIt(message:string){
+   console.log(message);
+ }
+
+ //Angular life cycle events below besides the regular used oninit and onChanges which are used above
+ // Beware! Called frequently!
+  ngDoCheck() { this.logIt(`DoCheck : Called in every change detection cycle anywhere on the page`); }
+
+  ngAfterContentInit() { this.logIt(`AfterContentInit`);  }
+
+  // Beware! Called frequently!
+  ngAfterContentChecked() { this.logIt(`AfterContentChecked :  Called in every change detection cycle anywhere on the page`); }
+
+  ngAfterViewInit() { this.logIt(`AfterViewInit`); }
+
+  // Beware! Called frequently!
+  ngAfterViewChecked() { this.logIt(`AfterViewChecked : Called in every change detection cycle anywhere on the page`); }
+
+  ngOnDestroy() {  console.log('onDestroy called');}
+
 }
