@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter,
         OnInit, OnChanges,
         OnDestroy, DoCheck, AfterContentInit, AfterViewInit,
-        AfterViewChecked, AfterContentChecked } from '@angular/core';
+        AfterViewChecked, AfterContentChecked, SimpleChanges } from '@angular/core';
 import { Person } from '../person';
 import { PeopleService } from '../shared/people.service';
 import { ActivatedRoute } from '@angular/router';
@@ -45,7 +45,7 @@ OnDestroy  {
     this.isEdit = true;      
   }
 
-  ngOnChanges() {
+  ngOnChanges(simplechanges : SimpleChanges) {
 
     if (this.isEditMode) {
       //create copy of input item to edit
@@ -55,6 +55,8 @@ OnDestroy  {
       this.personUnderEdit = null;
     }
     this.isEdit = this.isEditMode;
+
+    this.logIt("ngOnChanges",simplechanges);
   }
 
   savePerson() {
@@ -86,8 +88,12 @@ OnDestroy  {
      //this.person = null; //Lesson Learnt : dont modify input/ouput properties they break the link if input/ouput properties are not objects
   }
 
- logIt(message:string){
-   console.log(message);
+ logIt(message:string, object : any = null){
+   if (object != null ){
+    console.log(message + JSON.stringify(object));
+   }
+   else
+    console.log(message);
  }
 
  //Angular life cycle events below besides the regular used oninit and onChanges which are used above
