@@ -84,6 +84,7 @@ TO explore
 
 3) https://blog.thoughtram.io/angular/2016/02/22/angular-2-change-detection-explained.html
  
+4)https://codecraft.tv/courses/angular/unit-testing/jasmine-and-karma/
 ----
 https://www.ng-book.com/2/#contents - angular topics in ng-book
 https://www.learnrxjs.io/operators/combination/combinelatest.html  - learn about rxjs
