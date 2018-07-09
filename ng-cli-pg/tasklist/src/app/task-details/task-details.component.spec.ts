@@ -6,7 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { componentFactoryName } from '@angular/compiler';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
-fdescribe('TaskDetailsComponent', () => {
+describe('TaskDetailsComponent', () => {
   let component: TaskDetailsComponent;
   let fixture: ComponentFixture<TaskDetailsComponent>;
 
@@ -25,7 +25,7 @@ fdescribe('TaskDetailsComponent', () => {
     fixture.detectChanges();
   });
 
-  fit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
