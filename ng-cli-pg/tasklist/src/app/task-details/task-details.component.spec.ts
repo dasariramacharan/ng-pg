@@ -4,6 +4,7 @@ import { TaskDetailsComponent } from './task-details.component';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { componentFactoryName } from '@angular/compiler';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('TaskDetailsComponent', () => {
   let component: TaskDetailsComponent;
@@ -12,12 +13,13 @@ describe('TaskDetailsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ TaskDetailsComponent ],
-      imports:[FormsModule,RouterTestingModule] 
+      imports:[FormsModule,RouterTestingModule],
+      schemas: [ NO_ERRORS_SCHEMA ] // ignore unknown directives
     })
     .compileComponents();
   }));
 
-  beforeEach(() => {
+ beforeEach(() => {
     fixture = TestBed.createComponent(TaskDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
