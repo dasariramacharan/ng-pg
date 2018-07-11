@@ -10,7 +10,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class PeopleService {
   
-  private peopleUrl ='api/people'; //url to web api
+  peopleUrl ='api/people'; //url to web api
   private httpOptions = { headers: new HttpHeaders({'Content-type':'application/json'})};
   
   constructor(private http:HttpClient,
@@ -43,6 +43,7 @@ export class PeopleService {
   updatePerson (person: Person): Observable<any> {
   
     return this.http.put(this.peopleUrl, person, this.httpOptions).pipe(
+     // tap() =>used to Transparently perform actions or side-effects, such as logging.
       tap(_ => this.log(`updated person id=${person.id}`)),
       catchError(this.handleError<any>('updatePerson'))
     );
