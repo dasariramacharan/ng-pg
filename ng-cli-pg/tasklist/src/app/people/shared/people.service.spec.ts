@@ -103,7 +103,7 @@ describe('PeopleService', () => {
       const requests = httpTestingController.match(peopleService.peopleUrl);
       expect(requests.length).toEqual(3, 'calls to getPeople()');
 
-      // Respond to each request with different mock hero results
+      // Respond to each request with different mock person results
       requests[0].flush([]);
       requests[1].flush([{id: 1, name: 'Andrew'}]);
       requests[2].flush(expectedPeople);
@@ -111,35 +111,37 @@ describe('PeopleService', () => {
   });
 
   describe('#updatePerson', () => {
+    
+    //TODO: Why we need below val when not used or how to use it
     // Expecting the query form of URL so should not 404 when id not found
     const makeUrl = (id: number) => `${peopleService.peopleUrl}/?id=${id}`;
 
-    it('should update a hero and return it', () => {
+    it('should update a person and return it', () => {
 
       const updatePerson: Person = { id: 1, name: 'A' };
 
       peopleService.updatePerson(updatePerson).subscribe(
-        data => expect(data).toEqual(updatePerson, 'should return the hero'),
+        data => expect(data).toEqual(updatePerson, 'should return the person'),
         fail
       );
 
-      // PersonService should have made one request to PUT hero
+      // PersonService should have made one request to PUT person
       const req = httpTestingController.expectOne(peopleService.peopleUrl);
       expect(req.request.method).toEqual('PUT');
       expect(req.request.body).toEqual(updatePerson);
 
-      // Expect server to return the hero after PUT
+      // Expect server to return the person after PUT
       const expectedResponse = new HttpResponse(
         { status: 200, statusText: 'OK', body: updatePerson });
       req.event(expectedResponse);
     });
 
     // This service reports the error but finds a way to let the app keep going.
-    it('should turn 404 error into return of the update hero', () => {
+    it('should turn 404 error into return of the update person', () => {
       const updatePerson: Person = { id: 1, name: 'A' };
 
       peopleService.updatePerson(updatePerson).subscribe(
-        data => expect(data).toEqual(updatePerson, 'should return the update hero'),
+        data => expect(data).toEqual(updatePerson, 'should return the update person'),
         fail
       );
 
@@ -151,7 +153,29 @@ describe('PeopleService', () => {
     });
   });
   
+  describe('#addPerson',()=>{
+       
+    it('should raise error if error received from server ',()=>{
+      const addPerson: Person = {  id:0, name :'duplicate' };
+      const emsg = 'deliberate 404 error';
 
+      peopleService.addPerson(addPerson).subscribe(
+        data => fail('should have failed with the 404 error'),
+        (error: HttpErrorResponse) => {
+          expect(error.status).toEqual(404, 'status');
+          expect(error.error).toEqual(emsg, 'message');
+        }
+      );
+
+
+      const req = httpTestingController.expectOne(peopleService.peopleUrl);
+
+     // Respond with mock error
+    req.flush(emsg, { status: 404, statusText: 'Not Found' });
+
+    });
+
+  })
 
   
 
